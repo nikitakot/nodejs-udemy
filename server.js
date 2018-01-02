@@ -30,6 +30,8 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(express.static(__dirname + '/public'));
+
 app.get('/', (req, res) => {
     res.render('home.hbs', {
         pageTitle: 'Home Page',
@@ -37,11 +39,16 @@ app.get('/', (req, res) => {
     })
 });
 
-app.use(express.static(__dirname + '/public'));
-
 app.get('/about', (req, res) => {
     res.render('about.hbs', {
         pageTitle: 'About Page'
+    })
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects-page.hbs', {
+        pageTitle: 'Projects page',
+        paragraph: 'Hi! This is the projects page!'
     })
 });
 
